@@ -17,6 +17,6 @@ test:
     - chmod 755 ./.circle/bootstrap.sh
     - ./.circle/bootstrap.sh
     - cd roxy && chmod 755 ml
-    - cd roxy && ./ml ci bootstrap
-    - cd roxy && ./ml ci deploy modules
+    - cd roxy && ./ml ci bootstrap -v
+    - cd roxy && ./ml ci deploy modules -v
     - npm install -g gulp && npm install && gulp --ml.user=admin --ml.password=password --ml.port=9305
