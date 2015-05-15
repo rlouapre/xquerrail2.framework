@@ -106,8 +106,14 @@ gulp.task('tag', ['build'], function (/*cb*/) {
 });
 
 gulp.task('bump', function () {
-  return gulp.src(['./package.json'])
+  return gulp.src(['./package.json', './mlpm.json'])
     .pipe(bump())
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('bump-mlpm', function () {
+  return gulp.src(['./package.json', './mlpm.json'])
+    .pipe(bump({'type': 'prerelease'}))
     .pipe(gulp.dest('./'));
 });
 

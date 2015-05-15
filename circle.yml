@@ -20,3 +20,9 @@ test:
     - cd roxy && ./ml ci bootstrap -v
     - cd roxy && ./ml ci deploy modules -v
     - npm install -g gulp && npm install && gulp --ml.user=$ML_USER --ml.password=$ML_PASSWORD --ml.port=$ML_PORT --ml.host=$ML_HOST
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - npm install -g mlpm && mlpm login $MLPM_TOKEN && gulp bump-mlpm && mlpm publish
