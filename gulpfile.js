@@ -49,8 +49,7 @@ gulp.task('copy-no-xqy', function(){
 gulp.task('last-git-commit', function() {
   return gitinfo()
     .pipe(es.map(function(data, cb) {
-      gutil.log(data);
-      lastCommit = data['\'local.branch.current.SHA,\' '];
+      lastCommit = data['local.branch.current.SHA'];
       cb();
     }))
 })
