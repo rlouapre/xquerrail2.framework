@@ -19,4 +19,4 @@ test:
     - cd roxy && chmod 755 ml
     - cd roxy && ./ml ci bootstrap -v
     - cd roxy && ./ml ci deploy modules -v
-    - npm install -g gulp && npm install && gulp --ml.user=admin --ml.password=password --ml.port=9305
+    - npm install -g gulp && npm install && gulp --ml.user=admin --ml.password=password --ml.port=9305 --ml.host=localhost
