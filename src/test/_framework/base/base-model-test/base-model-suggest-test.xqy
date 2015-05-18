@@ -132,11 +132,11 @@ declare %test:case function model-suggest-name-test() as item()*
   )
 };
 
-declare %test:case function model-suggest-lastName-in-specific-document-test() as item()*
+declare %test:ignore function model-suggest-lastName-in-specific-document-test() as item()*
 {
   let $model := domain:get-model("model25")
   let $params := map:new((
-    map:entry("query", "lastName:jsm*")
+    map:entry("query", "lastName:jsm*"),
     map:entry("_query", "name:jim6")
   ))
   let $suggest := model:suggest($model, $params)
@@ -144,7 +144,8 @@ declare %test:case function model-suggest-lastName-in-specific-document-test() a
   return (
     assert:not-empty($suggest),
     $suggest ! (
-      assert:true(fn:starts-with(., "lastName:sm"), text{.,"start with", "lastName:sm"})
+      assert:true(fn:starts-with(., "lastName:jsmith6"), text{.,"start with", "lastName:jsmith6"}),
+      assert:false(fn:starts-with(., "lastName:jsmith5"), text{.,"should not start with", "lastName:jsmith5"})
     )
   )
 };
